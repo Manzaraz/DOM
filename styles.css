@@ -1,0 +1,392 @@
+:root {
+    --font-title: 'Zen Dots', cursive;
+    --font-main: 'IBM Plex Serif', serif;
+    --font-size: 16px;
+    --main-color: #f7df1e;
+    --second-color: #222;
+    --light-color-text: #ccc;
+    --main-modal-color: rgba(247,222,30, 0.85);
+    --second-modal-color: rgba(34,34,34, 0.85);
+    --container-width: 1200px;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: var(--font-main);
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+}
+
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+
+    
+body {
+    margin: 0;        
+    overflow-x: hidden;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Menu Hamburger */
+
+.header {
+    position: sticky;
+    z-index: 997;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: #222;
+}
+.header h1 {
+    margin: 0;
+    font-family: var(--font-title);
+    text-align: center;
+}
+
+.section {
+    padding: 2rem;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);
+    min-height: 100vh;
+    text-align: center;
+}
+
+.panel {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    overflow-y: auto; /*esto hace que nuestro menu pueda scrollearse hacia abajo*/
+    background-color: var(--second-modal-color);
+    /* Efecto de opacidad
+    opacity: 0;
+    */
+    /* visibility: hidden; */
+    transition: transform .4s ease; 
+    /* transition .3s ease; */
+    /* Efecto sale de los costados */
+    /* transition: transform .4s ease; */
+    /* menu sale de ariba */
+    /* transform: translate(0, -100%); */
+    /* menu sale de abajo */
+    /* transform: translate(0, 100%); */
+    /* menu sale de la derecha */
+    transform: translate(100%, 0);
+    
+}
+.panel.is-active {
+    /* para que el se active la opacida */
+    /* opacity: 1;
+    visibility: visible; */
+    /* para que se active el efecto sale de los costados */
+    transform: translate(0 ,0);
+}
+
+.panel-btn {
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
+
+.menu {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: var(--font-title);
+    align-items: center;
+    text-align: center;
+    scroll-behavior: smooth;
+    
+}
+.menu a {
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all .4s ease;
+}
+.menu a:hover {
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: var(--main-modal-color);
+}
+.clock h3 {
+   font-family: var(--font-title);
+
+}
+
+/* Eventos del teclado */
+.stage {
+    display: flex;
+    min-height: 50vh;
+    background-color: var(--second-color);
+}
+.ball {
+    margin: auto; 
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
+}
+
+
+/* Button bottom to top */
+.scroll-top-btn {
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: calc(4.25rem + 1vw);
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem; 
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    color: var(--second-color);
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    transition: all .3s ease-out;
+}
+.scroll-top-btn:hover {
+    background-color:var(--second-color);
+    color:var(--main-color);
+}
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/*  Dark theme Button */
+.dark-theme-btn {
+    position: fixed;
+    z-index: 997;
+    bottom: 1vh;
+    left: 1vw;
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: var(--main-color);
+    color: var(--second-color);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease-out;
+
+}
+.dark-theme-btn:hover {
+    background-color:var(--second-color);
+    color:var(--main-color);
+}
+.dark-mode {
+    background-color: var(--second-color);
+    color: #ddd;
+    color: silver;
+}
+
+/* Network Status */
+
+.online, 
+.offline {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #1b4e20;
+    color: #ddd;
+}
+
+.offline {
+    background-color: #b71c1c;
+}
+
+/* Search Filters */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* el auto fit permite generar automatica mente la repetifcion de las columns que concindan con las propiedades del segundo parametro*/
+}
+
+.card {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all .3s ease-out;
+}
+
+.card img { 
+    width: 100%;
+    height: auto;
+}
+.card figcaption {
+    padding: 1rem;
+}
+
+.filter {
+    display: none;
+    /*estas propiedades son para que se pueda animar de manera agradable, a diferencia dle display: none que no se puede animar*/
+    /* visibility: hidden;
+    opacity: 0;
+    order: 1; */
+}
+
+
+
+/* Responsive Slider */
+.slider {
+    border:  thin solid #1b4e20;
+    position: relative;
+    width: 80%;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.slider-slides {
+    position: relative;
+    height: 400px;
+}
+
+.slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    
+}
+.slider-slide img {
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    object-position: 50% 0%;
+
+}
+
+.slider-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+.slider-btns {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.60rem;
+    font-weight: bold;
+
+}
+
+.slider a {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: thin solid #000;
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    transition: all .3s ease;
+
+}
+
+.slider a:hover {
+    color: #4d4d4d;
+}
+
+
+/* Scroll Spy */
+
+@media screen and (min-width: 1024px) {
+    body { 
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 4rem auto;
+        grid-template-areas: 
+            'header header'
+            'main panel';
+    }
+    main {
+        grid-area: main;
+    }
+    .header {
+        grid-area: header;
+    }
+    
+    .panel {
+        grid-area: panel;
+        align-self: start;
+        position: sticky;
+        top: 4rem;
+        justify-content: flex-start;
+        background-color: var(--second-color);
+        transform: translate(0, 0);
+        opacity: 1;
+        visibility: visible;
+
+    }
+    .panel-btn {
+        display: none;
+
+    }
+    .menu {
+        justify-content: start;
+        text-align: right;
+    }
+    .menu a {
+        font-size: 1rem;
+        padding: .75rem;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+        color: var(--second-color);
+        background-color: var(--main-color);
+    }
+    .scroll-top-btn {
+        right: initial;
+        left: calc(4.25rem + 1vw);
+    }
+
+}
