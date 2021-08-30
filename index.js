@@ -15,6 +15,8 @@ import draw from './components/sorteo.js';
 import slider from './components/carrousel.js';
 import scrollSpy from './components/scroll_spy.js';
 import smartVideo from './components/smart_video.js';
+import contactFromValidations from './components/forms_validations.js';
+import speechReader from './components/narrator.js';
 
 
 const d = document;
@@ -47,12 +49,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
     slider();
     scrollSpy();
     smartVideo();
+    contactFromValidations();
 })
 
 d.addEventListener('keydown', (e) => {
-    moveBall(e, '.ball','.stage')
+    moveBall(e, '.ball','.stage');
 })
 darkTheme(".dark-theme-btn", "dark-mode");
-networkStatus()
+networkStatus();
+speechReader();
 
-// api getUserMedia / media devices 
